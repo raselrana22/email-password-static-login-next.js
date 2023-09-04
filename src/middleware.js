@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { verifyTokenCookie } from "./app/lib/verify-token-cookie";
 
+// The middleware function
 export async function middleware(req) {
     try {
         if (req.nextUrl.pathname.startsWith('/dashboard')) {
@@ -15,7 +16,6 @@ export async function middleware(req) {
                 return NextResponse.redirect('/login'); // Redirect to a login page or handle unauthorized access appropriately
             }
         }
-
         // Allow access to other routes
         return NextResponse.next();
     } catch (error) {
